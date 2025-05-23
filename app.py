@@ -8,32 +8,38 @@ model = joblib.load('best_model_svm.pkl')
 scaler = joblib.load('scaler.pkl')
 
 st.title("🩺 Diyabet Tahmin Uygulaması")
-st.markdown("Aşağıdaki bilgileri girerek diyabet riskini tahmin edebilirsiniz.")
+st.markdown("Aşağıdaki bilgileri girerek diyabet riskinizi öğrenebilirsiniz.")
 
-# Girişler
+# Kullanıcıdan verileri al
 age = st.slider("Yaş", 18, 90, 30)
-bmi = st.slider("Vücut Kitle İndeksi (BMI)", 10.0, 50.0, 22.0)
+weight = st.number_input("Kilonuz (kg)", 30.0, 200.0, 70.0)
+height_cm = st.number_input("Boyunuz (cm)", 100.0, 220.0, 170.0)
 smoking = st.selectbox("Sigara Kullanıyor musunuz?", [0, 1])
 alcohol = st.selectbox("Alkol Kullanıyor musunuz?", [0, 1])
 phys = st.selectbox("Fiziksel Aktivite Yapıyor musunuz?", [0, 1])
 
-# Eğitimde kullanılan tüm sütun isimleri
+# BMI Hesapla
+height_m = height_cm / 100
+bmi = round(weight / (height_m ** 2), 2)
+st.markdown(f"💡 Hesaplanan Vücut Kitle İndeksiniz (BMI): **{bmi}**")
+
+# Eğitimde kullanılan tüm sütunlar
 columns = ['HighBP', 'HighChol', 'CholCheck', 'BMI', 'Smoker', 'Stroke',
            'HeartDiseaseorAttack', 'PhysActivity', 'Fruits', 'Veggies',
            'HvyAlcoholConsump', 'AnyHealthcare', 'NoDocbcCost', 'GenHlth',
            'MentHlth', 'PhysHlth', 'DiffWalk', 'Sex', 'Age', 'Education', 'Income']
 
-# Boş bir satırlık DataFrame oluştur
+# Boş DataFrame
 input_data = pd.DataFrame(np.zeros((1, len(columns))), columns=columns)
 
-# Kullanıcının girdiği verileri ilgili sütunlara yerleştir
+# Girdileri yerleştir
 input_data['Age'] = age
 input_data['BMI'] = bmi
 input_data['Smoker'] = smoking
 input_data['PhysActivity'] = phys
 input_data['HvyAlcoholConsump'] = alcohol
 
-# Tahmin butonu
+# Tahmin
 if st.button("Tahmin Et"):
     scaled_input = scaler.transform(input_data)
     prediction = model.predict(scaled_input)
