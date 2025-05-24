@@ -7,6 +7,7 @@ import joblib
 model = joblib.load('best_model_svm.pkl')
 scaler = joblib.load('scaler.pkl')
 
+st.image("https://tektiklabilgielinde.saglik.gov.tr/depo/sagligimyeni/hastaliklar/diyabet/tip1/resim_5.jpg", width=40)
 st.title("🩺 Diyabet Tahmin Uygulaması")
 st.markdown("Aşağıdaki bilgileri girerek diyabet riskinizi öğrenebilirsiniz.")
 
