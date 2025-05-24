@@ -10,17 +10,19 @@ Projede, CDC'nin BRFSS 2015 veri seti kullanılarak bireylerin diyabet hastalı�
 
 - Keşifsel Veri Analizi (EDA)
 
-- Veri Ön işleme (eksik değer, normalizasyon, vs.)
+- Veri Ön işleme : eksik değer, normalizasyon, vs. işlemler için
 
 - Modelleme (Logistic Regression, KNN, SVM, Random Forest)
 
 - Karşılaştırmalı metrik değerlendirme
 
-- Hiperparametre optimizasyonu (SVM için)
+- Hiperparametre optimizasyonu seçilen model (SVM) için
 
-- Web arayüzü ile son kullanıcı etkileşimi (Streamlit)
+- Web arayüzü ile son kullanıcı etkileşimi Streamlit ile
 
-- GPU destekli model eğitimi (RAPIDS - cuML)
+- GPU destekli model eğitimi RAPIDS ve cuML ile
+  
+  yapılmıştır.
 
 
 # Kullanılan Algoritmalar ve Seçim Gerekçeleri
@@ -29,11 +31,15 @@ Dört farklı makine öğrenmesi algoritması uygulanmıştır:
 
 Logistic Regression -> Hızlı ve yorumlanabilir bir baz model
 
+
 K-Nearest Neighbors -> Basit ve örnek temelli modelleme
+
 
 SVM                 -> Küçük/orta boyutlu veri setlerinde başarılı, karar sınırı iyi
 
+
 Random Forest       -> Ensemble yapısıyla aşırı öğrenmeye dayanıklı
+
 
 Yapılan karşılaştırmada en yüksek F1 skoru 0.762952 değeri ile SVM modeli olduğu için bu modelin hiperparametre optimizasyonu yapılmış ve kullanılacak model olarak seçilmiştir.
 
@@ -69,13 +75,7 @@ Bu analiz, diyabet riski yüksek bireylerin toplu özelliklerini anlamamıza yar
 
 # BONUS 2: GPU Destekli Model Eğitimi (cuML)
 
-cuml.svm.SVC ile RAPIDS ekosistemi kullanılarak GPU ortamında model eğitildi. CPU ile eğitilen SVM ile performans karşılaştırması aşağıdaki gibidir:
-
-Kriter               CPU (sklearn)              GPU (cuML)
-Eğitim Süresi        14dk                         2dk
-
-Accuracy             0.78                         0.78
-F1 Score             0.78                         0.78
+cuml.svm.SVC ile RAPIDS ekosistemi kullanılarak GPU ortamında model eğitildi. Model CPU ile eğitilirken yaklaşık 15 dk sürüyorken, GPU ile yaklaşık olarak 2 dk sürmüştür gözle görülen fark ciddi şekildedir.
 
 Sonuç: Eğitim süresi ciddi şekilde azaldı, özellikle büyük veri setleri için GPU büyük avantaj sunmaktadır.
 
