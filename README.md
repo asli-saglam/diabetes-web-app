@@ -99,9 +99,11 @@ Web Arayüzü:
 Bu proje, temel gözetimli ve gözetimsiz öğrenme yöntemlerini başarıyla uygulayarak diyabet tahmini üzerine etkili bir çözüm sunmuştur. Gelecekte, daha geniş ve çeşitli veri setleri kullanılarak (örneğin farklı yıllara ait BRFSS veya NHANES verileri) modelin genellenebilirliği artırılabilir. Ayrıca yapay sinir ağları (ANN) veya evrişimli sinir ağları (CNN) gibi derin öğrenme teknikleriyle model performansı daha da iyileştirilebilir. Gerçek zamanlı veri toplama yeteneği (örneğin bir mobil uygulama entegrasyonu) sayesinde kullanıcı etkileşimi artırılabilir. Son olarak, kullanıcıların kişisel sağlık profillerine özel öneriler sunan karar destek sistemleri geliştirilerek projenin pratik sağlık hizmetlerine entegrasyonu sağlanabilir.
 
 # Linkler
-Gözetimli Öğrenme -> https://www.kaggle.com/code/aslisaglam/supervised
+Gözetimli Öğrenme  -> https://www.kaggle.com/code/aslisaglam/supervised
 
 Gözetimsiz Öğrenme -> https://www.kaggle.com/code/aslisaglam/unsupervised
+
+Web Arayüzü        -> https://www.kaggle.com/code/aslisaglam/diabets-project
 
 # Teşekkür
 
